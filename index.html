@@ -48,6 +48,25 @@
 <script>
 const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
 
+function strip(bandName) {
+  return bandName.replace(/^(a |the |an )/i, '').trim();
+}
+
+const sortedBands = bands.sort((a, b) => strip(a) > strip(b) ? 1 : -1);
+
+document.querySelector('#bands').innerHTML =
+  sortedBands
+    .map(band => `<li>${band}</li>`)
+    .join('');
+
+console.log(sortedBands);
+
+   /*if (strip(a) > b)) {
+       return 1;
+   } else {
+       return -1;
+   }*/
+ 
 /*for(let i = 0; i < bands.length; i++) {
     if(bands[i].indexOf('The') != -1) {
     bands[i] = bands[i].replace('The','') }
@@ -61,28 +80,9 @@ const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'N
 
 console.log(bands[i]);
 }*/
-function strip(bandName) {
-     return bandName.replace(/^(a|the|an)/i, '').trim();
-}
-
-const sortedBands = bands.sort((a,b) => strip(a) > strip(b) ? 1 : -1);
-
-document.querySelector('#bands').innerHTML = 
-sortedBands
-.map(band => `<li>${band}</li>`)
-.join('');
-
-console.log(sortedBands);
-
-   /*if (strip(a) > b)) {
-       return 1;
-   } else {
-       return -1;
-   }*/
-
-
 
 </script>
 
 </body>
 </html>
+
